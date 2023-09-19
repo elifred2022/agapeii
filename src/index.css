@@ -48,3 +48,147 @@ header {
   color: white; 
   position: relative;
 }
+
+Link {
+  
+  color: white; 
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 0 5px 10px #c78306a4;
+  box-sizing: border-box;
+  font-size: 2rem;
+  
+  
+}
+
+a {
+  color: white; 
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 0 5px 10px #c78306a4;
+  box-sizing: border-box;
+  font-size: 1rem;
+ /* background-color: #c78306a4; */
+  
+}
+
+a:hover {
+  color: red;/* #08a05c*/
+}
+
+li {
+  list-style: none;
+  font-size: 2rem;
+}
+
+header ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+
+}
+
+header ul li {
+  padding: 0 1rem;
+}
+
+header ul li a {
+  font-weight: bold;
+}
+
+header .cart {
+  position: relative;
+  cursor: pointer;
+}
+
+header .cart box-icon {
+  width: 45px;
+  height: 45px;
+}
+
+header .cart span {
+  position: absolute;
+  top: -1rem;
+  right: -1.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+ /* border: 1px solid red; */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  padding: 0rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background-color: crimson;
+}
+
+/********LAYOUT******/
+
+.layout {
+  flex-direction: column;
+}
+
+/**************************************
+
+.encabezado_ingreso {
+  display: flex;
+  padding: 1.5px;
+  box-sizing: border-box;
+}
+
+.encabezado_ingreso b {
+  display: flex;
+  padding: 1.5px;
+  margin-right: 25px;
+  margin-left: 25px;
+  box-sizing: border-box;
+}
+
+.formIngreso__bebida {
+  display: flex;
+  padding: 1.5px;
+  margin-right: 25px;
+  margin-left: 25px;
+  box-sizing: border-box;
+}
+
+/*******************************************/
+
+.formCabecera {
+  display: flex;
+  padding: 1.5px;
+  box-sizing: border-box;
+}
+
+.formCabecera b {
+  display: flex;
+  padding: 1.5px;
+  margin-right: 15px;
+  margin-left: 15px;
+  box-sizing: border-box;
+}
+
+.formBebidas {
+  display: flex;
+  padding: 1.5px;
+  box-sizing: border-box;
+  color: yellow;
+}
+
+.formBebidas b {
+  display: flex;
+  padding: 1.5px;
+  margin-right: 15px;
+  margin-left: 15px;
+  box-sizing: border-box;
+}
+
+.formBebidas span {
+  display: flex;
+  padding: 1.5px;
+  margin-right: 45px;
+  margin-left: 45px;
+  box-sizing: border-box;
+}

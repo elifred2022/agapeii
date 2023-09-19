@@ -1,6 +1,8 @@
 //import logo from "./logo.svg";
 //import "./App.css";
-import Bebidas from "./components/Bebidas";
+import Calculo from "./components/Calculo";
+import TransactionIn from "./components/TransactionIn";
+import TransactionList from "./components/TransactionList";
 import { GlobalProvider } from "./context/GlobalState";
 
 function App() {
@@ -10,7 +12,9 @@ function App() {
         <header className="App-header">
           <p>Agape</p>
         </header>
-        <Bebidas />
+        <TransactionIn />
+        <TransactionList />
+        <Calculo />
       </div>
     </GlobalProvider>
   );
