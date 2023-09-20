@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useGlobalState } from "../context/GlobalState";
-import Calculo from "./Calculo";
 
 function TransactionList() {
   const { transactions, deleteTransaction } = useGlobalState();
+  const [tasksItems, setTasksItems] = useState([]);
+
+  useEffect(() => {
+    let data = localStorage.getItem("saveData");
+    if (data) {
+      setTasksItems(JSON.parse(data));
+    }
+  }, []);
 
   return (
     <div>
@@ -52,6 +59,8 @@ function TransactionList() {
 }
 
 export default TransactionList;
+
+// https://www.youtube.com/watch?v=XUHYQEJhVzs
 
 /*
  <table>

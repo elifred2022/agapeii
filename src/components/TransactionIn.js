@@ -1,15 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useGlobalState } from "../context/GlobalState";
 
 function TransactionIn() {
-  // console.log(props);
+  // ACA LA FUNCION PARA RECUPERAR LOS DATOS DEL LOCALSTORAGE Y SE COLOCA EL NOMBRE DE LA FUNCION obtenerRegistros EN EL STATE DE ARREGLO const [saveData, setSaveData] = useState(obtenerRegistros());
+  const obtenerRegistros = () => {
+    var datos = localStorage.getItem("saveData");
+    if (datos) {
+      return JSON.parse(datos);
+    } else {
+      return [];
+    }
+  };
+  ////////////////////////////////////////////////////////////////////
 
   const { addTransaction } = useGlobalState();
   const [queridoHermano, setQueridoHermano] = useState("");
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(0);
-  //const [totalComidas, setTotalComidas] = useState();
+
+  const [saveData, setSaveData] = useState(obtenerRegistros()); // este paa hacer un solo arreglo con los demas variables y cargarlos al localstorge con useeffect
 
   /************ UNA VEZ HECHO EL USEEFFECT VAMOS CON LAS BEBIDAS
   const [bebida, setBebida] = useState("");
@@ -20,18 +30,27 @@ function TransactionIn() {
 
   const onSubmit = (e) => {
     e.preventDefault(); //para que no envie el formulario a backend
+    var miObjeto = { queridoHermano, description, amount };
+    setSaveData([...saveData, miObjeto]);
+
     //props.addTransaction([bebida, cantBebida, amountBebida, subAmountBebida]); // se usa el props o se usa el context, estoy vieno si me qiedo con el context
     // addTransaction(bebida);
     //createNewTransaction([bebida, amountBebida, cantBebida, subAmountBebida]); // codigo del context viene de Globalstate
     //---localStorage.setItem("bebida", bebida); // para guardar en el local storage
 
     setQueridoHermano(""); // para limpiar el campo del input
-    // localStorage.setItem("costoBebida", amountBebida);
+    //localStorage.setItem("comensal", queridoHermano);
+    // alert("guardado");
+
     setDescription("");
-    //localStorage.setItem("cantBebida", cantBebida);
+    //localStorage.setItem("plato", description);
+    // alert("guardado");
+
     setAmount("");
-    //localStorage.setItem("cantBebida", cantBebida);
-    // setTotalComidas("");
+    //localStorage.setItem("valorPlato", amount);
+    //alert("guardado");
+
+    // setSaveData(true);
 
     /******* UNA VEZ HECHO EL USEEFFECT VAMOS CON LAS BEBIDAS
 
@@ -76,6 +95,12 @@ function TransactionIn() {
     );
   };
 
+  // ASI SE ENVIA LOS DATOS AL OCALSTORAGE
+  useEffect(() => {
+    localStorage.setItem("saveData", JSON.stringify(saveData));
+  }, [saveData]);
+  //////////////////////////////////////7
+
   return (
     <div>
       <h2 className="formBebidas">Ingresar Comidas</h2>
@@ -106,6 +131,8 @@ function TransactionIn() {
 }
 
 export default TransactionIn;
+
+// https://www.youtube.com/watch?v=gSSxNt38Jlc 8:50
 
 /****
  * 
