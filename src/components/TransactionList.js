@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useGlobalState } from "../context/GlobalState";
-import Calculo from "./Calculo";
+//import Calculo from "./Calculo";
 
 function TransactionList() {
   const { transactions, deleteTransaction } = useGlobalState();
@@ -55,7 +55,6 @@ function TransactionList() {
           ))}
         </tbody>
       </table>
-      <Calculo />
     </div>
   );
 }

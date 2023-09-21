@@ -20,8 +20,15 @@ function TransactionIn() {
   const [queridoHermano, setQueridoHermano] = useState("");
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(0);
+  const [amountComida = totalComidas, setAmountComida] = useState("");
 
   const [saveData, setSaveData] = useState(obtenerRegistros()); // este para hacer un solo arreglo con los demas variables y cargarlos al localstorge con useeffect
+
+  const subAmountComida = transactions.map(
+    (transactions) => transactions.amount
+  );
+
+  const totalComidas = subAmountComida.reduce((acc, item) => (acc += item), 0);
 
   /************ UNA VEZ HECHO EL USEEFFECT VAMOS CON LAS BEBIDAS
   const [bebida, setBebida] = useState("");
@@ -32,7 +39,7 @@ function TransactionIn() {
 
   const onSubmit = (e) => {
     e.preventDefault(); //para que no envie el formulario a backend
-    var miObjeto = { queridoHermano, description, amount };
+    var miObjeto = { queridoHermano, description, amount, totalComidas };
     setSaveData([...saveData, miObjeto]);
 
     //props.addTransaction([bebida, cantBebida, amountBebida, subAmountBebida]); // se usa el props o se usa el context, estoy vieno si me qiedo con el context
@@ -54,6 +61,7 @@ function TransactionIn() {
 
     // setSaveData(true);
 
+    //setAmountComida("");
     /******* UNA VEZ HECHO EL USEEFFECT VAMOS CON LAS BEBIDAS
 
     setBebida(""); // para limpiar el campo del input
@@ -128,6 +136,11 @@ function TransactionIn() {
         />
         <button>Agregar</button>
       </form>
+      <div>
+        <b>Total en comidas: </b>
+
+        <b className="formBebidas">$ {totalComidas}</b>
+      </div>
     </div>
   );
 }
