@@ -15,18 +15,6 @@ export const useGlobalState = () => {
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
-  /*
-  function createNewTransaction(transactions) {
-    console.log(transactions);
-    if (
-      !transactions.find((transactions) => transactions.name === transactions)
-    ) {
-      dispatch([...transactions, { name: transactions, done: false }]);
-    }
-    // dispatch([...state, { name: state, done: false }]); //este codigo me bloquea el sistema
-    // alert(transactions);
-  } */
-
   // funcion para añadir, ver codigos en el AppReducer
   const addTransaction = (transactions) => {
     //alert(transactions);

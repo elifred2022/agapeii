@@ -3,10 +3,12 @@
 import { useState, useEffect } from "react";
 import TransactionIn from "./components/TransactionIn";
 import TransactionList from "./components/TransactionList";
-import Calculo from "./components/Calculo";
+//import Calculo from "./components/Calculo";
 import { GlobalProvider } from "./context/GlobalState";
 
 function App() {
+  const [saveCalculo, setSaveCalculo] = useState();
+
   return (
     <GlobalProvider>
       <div className="App">
@@ -15,7 +17,6 @@ function App() {
         </header>
         <TransactionIn />
         <TransactionList />
-        <Calculo />
       </div>
     </GlobalProvider>
   );

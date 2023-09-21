@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { useGlobalState } from "../context/GlobalState";
+import Calculo from "./Calculo";
 
 function TransactionList() {
   const { transactions, deleteTransaction } = useGlobalState();
   const [tasksItems, setTasksItems] = useState([]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     let data = localStorage.getItem("saveData");
     if (data) {
       setTasksItems(JSON.parse(data));
     }
-  }, []);
+  }, []); */
 
   return (
     <div>
@@ -54,6 +55,7 @@ function TransactionList() {
           ))}
         </tbody>
       </table>
+      <Calculo />
     </div>
   );
 }

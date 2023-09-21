@@ -14,12 +14,14 @@ function TransactionIn() {
   };
   ////////////////////////////////////////////////////////////////////
 
+  const { transactions } = useGlobalState();
   const { addTransaction } = useGlobalState();
+
   const [queridoHermano, setQueridoHermano] = useState("");
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(0);
 
-  const [saveData, setSaveData] = useState(obtenerRegistros()); // este paa hacer un solo arreglo con los demas variables y cargarlos al localstorge con useeffect
+  const [saveData, setSaveData] = useState(obtenerRegistros()); // este para hacer un solo arreglo con los demas variables y cargarlos al localstorge con useeffect
 
   /************ UNA VEZ HECHO EL USEEFFECT VAMOS CON LAS BEBIDAS
   const [bebida, setBebida] = useState("");
@@ -99,7 +101,7 @@ function TransactionIn() {
   useEffect(() => {
     localStorage.setItem("saveData", JSON.stringify(saveData));
   }, [saveData]);
-  //////////////////////////////////////7
+  //////////////////////////////////////
 
   return (
     <div>

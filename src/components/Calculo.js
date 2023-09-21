@@ -1,14 +1,10 @@
 import React from "react";
 import { useGlobalState } from "../context/GlobalState";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Calculo() {
   const { transactions } = useGlobalState();
   const { addTransaction } = useGlobalState();
-  // const [resultadoBebidasB, setResultadoBebidasB] = useState();
-
-  // localStorage.setItem("resultadoBebidasB", resultadoBebidasB); // para guardar en el local storage
-  //setResultadoBebidasB(""); // para limpiar el campo del input
 
   const subAmountComida = transactions.map(
     (transactions) => transactions.amount
@@ -16,21 +12,16 @@ function Calculo() {
 
   const totalComidas = subAmountComida.reduce((acc, item) => (acc += item), 0);
 
-  const resultadoComidas = totalComidas;
-
-  //const resultadoBebidasB = resultadoBebidas;
-
-  //  props.createNewBebida([resultadoBebidasB, subAmountBebida]);
-  //addTransaction([resultadoBebidasB]); // esto viene del context globalstate
-  localStorage.setItem("totalComidas", resultadoComidas);
-
-  // resultado={resultadoBebidasB} <p>{resultadoBebidas} </p>
+  // ASI SE ENVIA LOS DATOS AL OCALSTORAGE
+  useEffect(() => {
+    localStorage.setItem("totalComidas", JSON.stringify(totalComidas));
+  }, [totalComidas]);
 
   return (
     <div>
       <b>Total en comidas: </b>
 
-      <b className="formBebidas">$ {resultadoComidas} </b>
+      <b className="formBebidas">$ {totalComidas} </b>
     </div>
   );
 }
