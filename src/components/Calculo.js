@@ -17,6 +17,10 @@ function Calculo() {
     localStorage.setItem("totalComidas", JSON.stringify(totalComidas));
   }, [totalComidas]);
 
+  useEffect(() => {
+    localStorage.getItem("totalComidas");
+  }, [totalComidas]);
+
   return (
     <div>
       <b>Total en comidas: </b>
