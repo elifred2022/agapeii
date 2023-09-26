@@ -20,7 +20,7 @@ function TransactionIn() {
   const [queridoHermano, setQueridoHermano] = useState("");
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(0);
-  const [amountComida = totalComidas, setAmountComida] = useState("");
+  // const [totalComidas, setTotalComida] = useState("");
 
   const [saveData, setSaveData] = useState(obtenerRegistros()); // este para hacer un solo arreglo con los demas variables y cargarlos al localstorge con useeffect
 
@@ -61,7 +61,7 @@ function TransactionIn() {
 
     // setSaveData(true);
 
-    //setAmountComida("");
+    //setTotalComida("");
     /******* UNA VEZ HECHO EL USEEFFECT VAMOS CON LAS BEBIDAS
 
     setBebida(""); // para limpiar el campo del input
@@ -81,7 +81,7 @@ function TransactionIn() {
       queridoHermano,
       description,
       amount: +amount,
-      //totalComidas: +amount
+      //totalComidas: +amount,
 
       /*** bebida,
       cantBebida,

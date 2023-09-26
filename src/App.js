@@ -1,79 +1,68 @@
-//import logo from "./logo.svg";
 //import "./App.css";
 import { useState, useEffect } from "react";
-import TransactionIn from "./components/TransactionIn";
-import TransactionList from "./components/TransactionList";
-//import Calculo from "./components/Calculo";
-import { GlobalProvider } from "./context/GlobalState";
+import { CapDataComida } from "./components/CapDataComida";
+import { TaskTable } from "./components/TaskTable";
+import { VisibilityControl } from "./components/VisibilityControl";
 
 function App() {
-  const [saveCalculo, setSaveCalculo] = useState();
+  const [tasksItems, setTasksItems] = useState([]);
+  const [showCompleted, setShowCompleted] = useState(false);
 
-  return (
-    <GlobalProvider>
-      <div className="App">
-        <header className="App-header">
-          <p>Agape</p>
-        </header>
-        <TransactionIn />
-        <TransactionList />
-      </div>
-    </GlobalProvider>
-  );
-}
-
-export default App;
-
-/* TRATANDO DE HACER EL LOCALSTORAGE
-const [transactionsItems, setTransactionsItems] = useState([]);
-
-  function createNewTransaction(transactionName) {
-    console.log(transactionName);
-    if (
-      !transactionsItems.find(
-        (transaction) => transaction.name === transactionName
-      )
-    ) {
-      setTransactionsItems([...transactionsItems, { name: transactionName }]);
+  function creatNewTask(taskName) {
+    console.log(taskName);
+    if (!tasksItems.find((task) => task.name === taskName)) {
+      setTasksItems([...tasksItems, { name: taskName, done: false }]);
     }
+
+    // setTasksItems([...tasksItems, { name: tasksItems, done: false }]); // asi se crea un nuevo objeto para no modificar objetos existentes regla de react; setTaskItems([...taskName, {name: taskName}])
   }
 
-  const toggleTransaction = (transaction) => {
-    setTransactionsItems(
-      transactionsItems.map((t) =>
-        t.name === transaction.name ? { ...t, done: !t.done } : t
+  const toggleTask = (task) => {
+    setTasksItems(
+      tasksItems.map((t) =>
+        t.name === task.name ? { ...t, done: !t.done } : t
       )
     );
   };
 
   useEffect(() => {
-    let data = localStorage.getItem("transaction");
+    let data = localStorage.getItem("task");
     if (data) {
-      setTransactionsItems(JSON.parse(data));
+      setTasksItems(JSON.parse(data));
     }
   }, []);
 
+  const cleanTasks = () => {
+    setTasksItems(tasksItems.filter((task) => !task.done));
+    setShowCompleted(false);
+  };
+
   useEffect(() => {
-    localStorage.setItem("transaction", JSON.stringify(transactionsItems));
-  }, [transactionsItems]);
+    localStorage.setItem("task", JSON.stringify(tasksItems));
+  }, [tasksItems]);
 
-
-  function App() {
   return (
-    <GlobalProvider>
-      <div className="App">
-        <header className="App-header">
-          <p>Agape</p>
-        </header>
-        <TransactionIn createNewTransaction={createNewTransaction} />
-        <TransactionList
-          transactions={transactionsItems}
-          toggleTransaction={toggleTransaction}
+    <main className="bg-dark vh-100 text-white">
+      <div className="container p-4 col-md-4 offset-md-4">
+        <CapDataComida creatNewTask={creatNewTask} />
+        <TaskTable tasks={tasksItems} toggleTask={toggleTask} />
+
+        <VisibilityControl
+          isChecked={showCompleted}
+          setShowCompleted={(checked) => setShowCompleted(checked)}
+          cleanTasks={cleanTasks}
         />
-        <Calculo />
+
+        {showCompleted === true && (
+          <TaskTable
+            tasks={tasksItems}
+            toggleTask={toggleTask}
+            showCompleted={showCompleted}
+          />
+        )}
       </div>
-    </GlobalProvider>
+    </main>
   );
 }
 
-  */
+export default App;
