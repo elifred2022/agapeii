@@ -45,8 +45,12 @@ header {
   background-color: white;
   box-shadow: 0 5px 10px #c78306a4;
   background: black;
-  color: white; 
+  color: yellow; 
   position: relative;
+}
+
+.sumacomida{
+  color: yellow; 
 }
 
 Link {

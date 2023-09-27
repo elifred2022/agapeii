@@ -9,8 +9,8 @@ function App() {
   const [tasksItems, setTasksItems] = useState([]);
   const [showCompleted, setShowCompleted] = useState(false);
 
-  function creatNewTask(taskName, comida, costoComida) {
-    console.log(taskName, comida, costoComida);
+  function creatNewTask(taskName, comida, costoComida, acumComida) {
+    console.log(taskName, comida, costoComida, acumComida);
     if (!tasksItems.find((task) => task.name === taskName)) {
       setTasksItems([
         ...tasksItems,
@@ -19,6 +19,7 @@ function App() {
           comida: comida,
           costoComida: costoComida,
           done: false,
+          acumComida: acumComida,
         },
       ]);
     }
