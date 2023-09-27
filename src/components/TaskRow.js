@@ -1,8 +1,10 @@
-export const TaskRow = ({ task, toggleTask }) => {
+export const TaskRow = ({ task, comida, toggleTask }) => {
   return (
     <tr>
+      <td>{task.name}</td>
+      <td>{task.comida}</td>
+      <td>{task.costoComida}</td>
       <td>
-        {task.name}
         <input
           type="checkbox"
           checked={task.done}

@@ -2,13 +2,17 @@ import { useState } from "react";
 
 export const CapDataComida = (props) => {
   // console.log(props); comento para q no salga en consola
-  const [newTasks, setNewTasks] = useState("");
+  const [newComensal, setNewComensal] = useState("");
+  const [newComida, setNewComida] = useState("");
+  const [newCostoComida, setNewCostoComida] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault(); /* este codigo para q no refresque la pagina*/
-    props.creatNewTask(newTasks);
+    props.creatNewTask(newComensal, newComida, newCostoComida);
     // localStorage.setItem("task", newTasks);
-    setNewTasks("");
+    setNewComensal("");
+    setNewComida("");
+    setNewCostoComida("");
   };
 
   return (
@@ -16,9 +20,23 @@ export const CapDataComida = (props) => {
       <div className="col-9">
         <input
           type="text"
-          placeholder="ingrese nueva tarea"
-          onChange={(e) => setNewTasks(e.target.value)}
-          value={newTasks}
+          placeholder="ingrese comensal"
+          onChange={(e) => setNewComensal(e.target.value)}
+          value={newComensal}
+          className="form-control"
+        ></input>
+        <input
+          type="text"
+          placeholder="ingrese comida"
+          onChange={(e) => setNewComida(e.target.value)}
+          value={newComida}
+          className="form-control"
+        ></input>
+        <input
+          type="number"
+          placeholder="ingrese costo comida"
+          onChange={(e) => setNewCostoComida(e.target.value)}
+          value={newCostoComida}
           className="form-control"
         ></input>
       </div>

@@ -18,7 +18,7 @@ export const VisibilityControl = ({
           onChange={(e) => setShowCompleted(e.target.checked)}
           checked={isChecked}
         />
-        <label>Mostrar tareas hechas</label>
+        <label>Mostrar comidas pagadas</label>
       </div>
 
       <button onClick={handleDelete} className="btn btn-danger btn-sm">
