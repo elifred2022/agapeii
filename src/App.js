@@ -4,6 +4,7 @@ import { CapDataComida } from "./components/CapDataComida";
 import { TaskTable } from "./components/TaskTable";
 import { VisibilityControl } from "./components/VisibilityControl";
 import Header from "./components/Header";
+import Informes from "./components/Informes";
 
 function App() {
   const [tasksItems, setTasksItems] = useState([]);

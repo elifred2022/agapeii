@@ -1,10 +1,12 @@
 import { useState } from "react";
+import Informes from "./Informes";
 
 export const CapDataComida = (props) => {
   // console.log(props); comento para q no salga en consola
   const [newComensal, setNewComensal] = useState("");
   const [newComida, setNewComida] = useState("");
   const [newCostoComida, setNewCostoComida] = useState(""); // estado para ir almacenando el monto ingresado
+
   // Estado para mantener la suma total
   const [newAcumComida, setNewAcumComida] = useState(0); // estado para ir sumando los montos ingresados
 
@@ -62,8 +64,7 @@ export const CapDataComida = (props) => {
           <button className="btn btn-primary btn-sm">Agregar</button>
         </div>
       </form>
-
-      <b className="sumacomida">Total Comidas: $ {newAcumComida} </b>
+      <Informes newAcumComida={newAcumComida} />
     </>
   );
 };

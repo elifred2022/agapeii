@@ -1,5 +1,6 @@
 import React from "react";
 import { TaskRow } from "./TaskRow";
+import { Informes } from "./Informes";
 
 export const TaskTable = ({ tasks, toggleTask, showCompleted = false }) => {
   const taskTableRows = (doneValue) => {
