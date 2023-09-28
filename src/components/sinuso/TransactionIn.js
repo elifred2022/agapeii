@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useGlobalState } from "../context/GlobalState";
+import { useGlobalState } from "../../context/GlobalState";
 
 function TransactionIn() {
   // ACA LA FUNCION PARA RECUPERAR LOS DATOS DEL LOCALSTORAGE Y SE COLOCA EL NOMBRE DE LA FUNCION obtenerRegistros EN EL STATE DE ARREGLO const [saveData, setSaveData] = useState(obtenerRegistros());

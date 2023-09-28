@@ -15,7 +15,7 @@ export const CapDataComida = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault(); /* este codigo para q no refresque la pagina*/
-    props.creatNewTask(newComensal, newComida, newCostoComida, newAcumComida);
+    props.creatNewComida(newComensal, newComida, newCostoComida, newAcumComida);
 
     // localStorage.setItem("task", newTasks);
     setNewComensal("");

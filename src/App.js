@@ -7,16 +7,16 @@ import Header from "./components/Header";
 import Informes from "./components/Informes";
 
 function App() {
-  const [tasksItems, setTasksItems] = useState([]);
+  const [comidasItems, setComidasItems] = useState([]);
   const [showCompleted, setShowCompleted] = useState(false);
 
-  function creatNewTask(taskName, comida, costoComida, acumComida) {
-    console.log(taskName, comida, costoComida, acumComida);
-    if (!tasksItems.find((task) => task.name === taskName)) {
-      setTasksItems([
-        ...tasksItems,
+  function creatNewComida(comidaName, comida, costoComida, acumComida) {
+    console.log(comidaName, comida, costoComida, acumComida);
+    if (!comidasItems.find((comida) => comida.name === comidaName)) {
+      setComidasItems([
+        ...comidasItems,
         {
-          name: taskName,
+          name: comidaName,
           comida: comida,
           costoComida: costoComida,
           done: false,
@@ -28,47 +28,47 @@ function App() {
     // setTasksItems([...tasksItems, { name: tasksItems, done: false }]); // asi se crea un nuevo objeto para no modificar objetos existentes regla de react; setTaskItems([...taskName, {name: taskName}])
   }
 
-  const toggleTask = (task) => {
-    setTasksItems(
-      tasksItems.map((t) =>
-        t.name === task.name ? { ...t, done: !t.done } : t
+  const toggleComida = (comida) => {
+    setComidasItems(
+      comidasItems.map((t) =>
+        t.name === comida.name ? { ...t, done: !t.done } : t
       )
     );
   };
 
   useEffect(() => {
-    let data = localStorage.getItem("task");
+    let data = localStorage.getItem("comida");
     if (data) {
-      setTasksItems(JSON.parse(data));
+      setComidasItems(JSON.parse(data));
     }
   }, []);
 
-  const cleanTasks = () => {
-    setTasksItems(tasksItems.filter((task) => !task.done));
+  const cleanComida = () => {
+    setComidasItems(comidasItems.filter((comida) => !comida.done));
     setShowCompleted(false);
   };
 
   useEffect(() => {
-    localStorage.setItem("task", JSON.stringify(tasksItems));
-  }, [tasksItems]);
+    localStorage.setItem("comida", JSON.stringify(comidasItems));
+  }, [comidasItems]);
 
   return (
     <main className="bg-dark vh-100 text-white">
       <div className="container p-4 col-md-4 offset-md-4">
         <Header />
-        <CapDataComida creatNewTask={creatNewTask} />
-        <TaskTable tasks={tasksItems} toggleTask={toggleTask} />
+        <CapDataComida creatNewComida={creatNewComida} />
+        <TaskTable comidas={comidasItems} toggleComida={toggleComida} />
 
         <VisibilityControl
           isChecked={showCompleted}
           setShowCompleted={(checked) => setShowCompleted(checked)}
-          cleanTasks={cleanTasks}
+          cleanComida={cleanComida}
         />
 
         {showCompleted === true && (
           <TaskTable
-            tasks={tasksItems}
-            toggleTask={toggleTask}
+            comidas={comidasItems}
+            toggleComida={toggleComida}
             showCompleted={showCompleted}
           />
         )}

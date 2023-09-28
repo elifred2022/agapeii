@@ -1,11 +1,11 @@
 export const VisibilityControl = ({
   setShowCompleted,
-  cleanTasks,
+  cleanComida,
   isChecked,
 }) => {
   const handleDelete = () => {
-    if (window.confirm("¿Quieres limpiar las tareas hechas?")) {
-      cleanTasks();
+    if (window.confirm("¿Desea reiniciar la App?")) {
+      cleanComida();
     }
   };
 
