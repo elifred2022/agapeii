@@ -1,4 +1,4 @@
-export const TaskRow = ({ comida, toggleComida }) => {
+export const ComidaRow = ({ comida, toggleComida }) => {
   return (
     <>
       <tr>

@@ -9,7 +9,7 @@ function Informes(props) {
     <>
       <h2>Total en comidas ordenadas</h2>
 
-      <b className="sumacomida">Total Comidas: $ {props.newAcumComida} </b>
+      <b className="yellow">Total Comidas: $ {props.newAcumComida} </b>
     </>
   );
 }

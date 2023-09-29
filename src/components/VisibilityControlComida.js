@@ -1,4 +1,4 @@
-export const VisibilityControl = ({
+export const VisibilityControlComida = ({
   setShowCompleted,
   cleanComida,
   isChecked,
@@ -22,7 +22,7 @@ export const VisibilityControl = ({
       </div>
 
       <button onClick={handleDelete} className="btn btn-danger btn-sm">
-        Limpiar
+        Limpiar datos comidas
       </button>
     </div>
   );
