@@ -24,7 +24,7 @@ function App() {
           comida: comida,
           costoComida: costoComida,
           done: false,
-          acumComida: acumComida,
+          acumComida: acumComida.toString(), // asi se convierte numero en string
         },
       ]);
     }
@@ -57,6 +57,8 @@ function App() {
   }, [comidasItems]);
 
   // SECCION DE BEBIDAS
+
+  /*
   function creatNewBebida(bebidaName, bebida, costoBebida, acumBebida) {
     console.log(bebidaName, bebida, costoBebida, acumBebida);
     if (!bebidasItems.find((bebida) => bebida.name === bebidaName)) {
@@ -98,6 +100,8 @@ function App() {
   useEffect(() => {
     localStorage.setItem("bebida", JSON.stringify(bebidasItems));
   }, [bebidasItems]);
+
+  */
 
   return (
     <main className="bg-dark vh-100 text-white">
