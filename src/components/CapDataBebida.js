@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Informes from "./Informes";
+import InformesBebida from "./InformesBebida";
 
 export const CapDataBebida = (props) => {
   // console.log(props); comento para q no salga en consola
@@ -67,6 +67,7 @@ export const CapDataBebida = (props) => {
           <button className="btn btn-primary btn-sm">Agregar</button>
         </div>
       </form>
+      <InformesBebida newAcumBebida={newAcumBebida} />
     </>
   );
 };

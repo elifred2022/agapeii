@@ -6,12 +6,14 @@ import { ComidasTable } from "./components/ComidasTable";
 import { VisibilityControlComida } from "./components/VisibilityControlComida";
 import { CapDataBebida } from "./components/CapDataBebida";
 import { BebidasTable } from "./components/BebidasTable";
+import { VisibilityControlBebida } from "./components/VisibilityControlBebida";
 
 function App() {
   const [comidasItems, setComidasItems] = useState([]);
   const [showCompleted, setShowCompleted] = useState(false);
 
   const [bebidasItems, setBebidasItems] = useState([]);
+  const [showCompletedBebida, setShowCompletedBebida] = useState(false);
 
   // SECCION DE COMIDAS
   function creatNewComida(comidaName, comida, costoComida, acumComida) {
@@ -58,17 +60,16 @@ function App() {
 
   // SECCION DE BEBIDAS
 
-  /*
-  function creatNewBebida(bebidaName, bebida, costoBebida, acumBebida) {
-    console.log(bebidaName, bebida, costoBebida, acumBebida);
+  function creatNewBebida(bebidaName, costoBebida, cantidadBebida, acumBebida) {
+    console.log(bebidaName, costoBebida, cantidadBebida, acumBebida);
     if (!bebidasItems.find((bebida) => bebida.name === bebidaName)) {
-      setComidasItems([
+      setBebidasItems([
         ...bebidasItems,
         {
           name: bebidaName,
-          comida: bebida,
           costoBebida: costoBebida,
-          done: false,
+          cantidadBebida: cantidadBebida,
+          doneBebida: false,
           acumBebida: acumBebida,
         },
       ]);
@@ -94,14 +95,12 @@ function App() {
 
   const cleanBebida = () => {
     setBebidasItems(bebidasItems.filter((bebida) => !bebida.done));
-    setShowCompleted(false);
+    setShowCompletedBebida(false);
   };
 
   useEffect(() => {
     localStorage.setItem("bebida", JSON.stringify(bebidasItems));
   }, [bebidasItems]);
-
-  */
 
   return (
     <main className="bg-dark vh-100 text-white">
@@ -125,14 +124,48 @@ function App() {
           cleanComida={cleanComida}
         />
       </div>
+
+      <div className="container p-4 col-md-4 offset-md-4">
+        <h2 className="yellow">Seccion de Bebidas</h2>
+        <CapDataBebida creatNewBebida={creatNewBebida} />
+        <BebidasTable bebidas={bebidasItems} toggleBebida={toggleBebida} />
+        {showCompletedBebida === true && (
+          <BebidasTable
+            bebidas={bebidasItems}
+            toggleBebida={toggleBebida}
+            showCompletedBebida={showCompletedBebida}
+          />
+        )}
+
+        <VisibilityControlBebida
+          isChecked={showCompletedBebida}
+          setShowCompletedBebida={(checked) => setShowCompletedBebida(checked)}
+          cleanBebida={cleanBebida}
+        />
+      </div>
     </main>
   );
 }
 
 export default App;
 
-/*  <div className="container p-4 col-md-4 offset-md-4">
-        <h2 className="yellow">Seccion de bebidas consumidas por el grupo</h2>
-        <CapDataBebida creatNewBebida={creatNewBebida} />
-        <BebidasTable bebidas={bebidasItems} toggleBebida={toggleBebida} />
-      </div> */
+/*
+
+CARGA EN LSO DOS ESTADOS COMIDA Y BEBIDA, PERO AUN NO PINTA AL USUARIO
+
+  {showCompletedBebida === true && (
+          <BebidasTable
+            bebidas={bebidasItems}
+            toggleBebida={toggleBebida}
+            showCompletedBebida={showCompletedBebida}
+          />
+        )}
+
+        <VisibilityControlBebida
+          isChecked={showCompletedBebida}
+          setShowCompletedBebida={(checked) => setShowCompletedBebida(checked)}
+          cleanBebida={cleanBebida}
+        />
+
+       
+        */

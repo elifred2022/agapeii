@@ -3,8 +3,9 @@ export const BebidaRow = ({ bebida, toggleBebida }) => {
     <>
       <tr>
         <td>{bebida.name}</td>
-        <td>{bebida.comida}</td>
         <td>${bebida.costoBebida}</td>
+        <td>{bebida.cantidadBebida}</td>
+
         <td>
           <input
             type="checkbox"

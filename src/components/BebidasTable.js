@@ -4,14 +4,14 @@ import { BebidaRow } from "./BebidaRow";
 export const BebidasTable = ({
   bebidas,
   toggleBebida,
-  showCompleted = false,
+  showCompletedBebida = false,
 }) => {
   const bebidaTableRows = (doneValue) => {
     return bebidas
       .filter((bebida) => bebida.done === doneValue)
       .map((bebida) => (
         <BebidaRow
-          comida={bebida}
+          bebida={bebida}
           key={bebida.name}
           toggleBebida={toggleBebida}
         />
@@ -25,7 +25,7 @@ export const BebidasTable = ({
           <th>Bebidas ordenadas</th>
         </tr>
       </thead>
-      <tbody>{bebidaTableRows(showCompleted)}</tbody>
+      <tbody>{bebidaTableRows(showCompletedBebida)}</tbody>
     </table>
   );
 };

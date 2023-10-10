@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-function Informes(props) {
+function InformesComida(props) {
   // la props viene del componente CapDataComida
   const [newTotal, setNewTotal] = useState("");
 
@@ -14,4 +14,4 @@ function Informes(props) {
   );
 }
 
-export default Informes;
+export default InformesComida;
