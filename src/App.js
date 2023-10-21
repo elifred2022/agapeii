@@ -70,7 +70,7 @@ function App() {
           costoBebida: costoBebida,
           cantidadBebida: cantidadBebida,
           doneBebida: false,
-          acumBebida: acumBebida,
+          acumBebida: acumBebida.toString(),
         },
       ]);
     }
@@ -129,6 +129,7 @@ function App() {
         <h2 className="yellow">Seccion de Bebidas</h2>
         <CapDataBebida creatNewBebida={creatNewBebida} />
         <BebidasTable bebidas={bebidasItems} toggleBebida={toggleBebida} />
+
         {showCompletedBebida === true && (
           <BebidasTable
             bebidas={bebidasItems}
@@ -150,6 +151,10 @@ function App() {
 export default App;
 
 /*
+
+
+
+ 
 
 CARGA EN LSO DOS ESTADOS COMIDA Y BEBIDA, PERO AUN NO PINTA AL USUARIO
 
